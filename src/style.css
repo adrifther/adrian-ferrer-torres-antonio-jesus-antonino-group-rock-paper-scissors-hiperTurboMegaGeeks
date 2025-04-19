@@ -1,5 +1,35 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
 
 body{
-    background: white;
+    background: black;
+    font-family:  "Special Gothic Expanded One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    
+    color: white;
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-size: 2.5em;
+    text-align: center;
+
+}
+ol{
+    
+    padding: 0;
+    margin:0;
+}
+li {
+    padding: 0;
+    font-size: medium;
+}
+.rules{
+    min-width: auto;
+    max-width: auto;
+}
+img{
+    object-fit: contain;
 }
