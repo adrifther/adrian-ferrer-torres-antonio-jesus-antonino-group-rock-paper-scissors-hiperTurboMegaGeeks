@@ -19,8 +19,8 @@
     <!-- Write your HTML code here, you can delete everything withing the body tags -->
     <div class="container-fluid text-center">
       <div>
-      <h1 class="mt-5" >Rock, Paper, Scissors, Lizard, Spock coming soon...</h1>
-      <img class="mw-100 .img-fluid img-thumbnail bg-secondary" src="./assets/img/png-clipart-rock-paper-scissors-rock-paper-scissors-lizard-spock-logo-scissors-game-white.png" />
+      <h1 class="mt-5">Rock, Paper, Scissors, Lizard, Spock coming soon...</h1>
+      <img class="mw-100 img-fluid img-thumbnail bg-secondary" src="./assets/img/png-clipart-rock-paper-scissors-rock-paper-scissors-lizard-spock-logo-scissors-game-white.png" />
       <p class="mt-4 covers my-0 mb-1">If I did not finish the game yet it's because: </p>
       <p id= "excuse" class="alert alert-warning mt-0">
         If this text is <b>not</b> centered and <b>yellow</b>, you probably have
@@ -28,7 +28,7 @@
       </p>
       <h2>10 Rock, Paper, Scissors, Lizard, Spock commandments</h2>
         <div class="d-flex flex-row container-fluid gap-10 justify-content-center">
-          <div class="left-div col col-sm-12 col-md-6 col-lg-4 p-1 justify-content-end">
+          <div class="left-div col col-sm-12 col-md-5 col-lg-4 p-1 justify-content-end">
             <ol>
               <li>Scissors cuts paper</li>
               <li>Paper covers rock</li>
@@ -42,34 +42,35 @@
               <li>Rock crushes scissors.</li> 
             </ol>
           </div>
-          <div class="right-div col col-sm-12 col-md-6 col-lg-4 p-1 mb-3 justify-content-end align-content-center" >
-            <img class="rules .img-fluid img-thumbnail" src="./assets/img/rules.png" />
+          <div class="right-div col col-sm-12 col-md-5 col-lg-4 p-1 mb-3 justify-content-end align-content-center" >
+            <img class="rules img-fluid img-thumbnail" src="./assets/img/rules.png" />
           </div>
 
-<!-- footer -->
-        <div class="fixed-bottom p-2 bg-dark text-light">
-          Made with ❤️ by
-          <a href="https://github.com/adrifther">Adrián Ferrer Torres</a>
-        </div>
+
       </div>
+      
       <!-- game -->
+      <div>
         <h2>PLAY!</h2>
         <div class="buttons d-flex flex-column container-fluid gap-10 justify-content-center">
-          <button class="btn btn-primary myButton" id="rock"><i class="fa-solid fa-hand-back-fist"></i></button>
-          <button class="btn btn-primary myButton" id="paper"><i class="fa-solid fa-hand"></i></button>
-          <button class="btn btn-primary myButton" id="scissors"><i class="fa-solid fa-hand-scissors"></i></button>
-          <button class="btn btn-primary myButton" id="lizard"><i class="fa-solid fa-hand-lizard"></i></button>
-          <button class="btn btn-primary myButton" id="spock"><i class="fa-solid fa-hand-spock"></i></button>
-          <p>VS</p>
+          <button onclick = "()=>{playGame(pcSelection, userSelects('rock'))};" class="btn btn-primary myButton" id="rock"><i class="fa-solid fa-hand-back-fist"></i></button>
+          <button onclick = "()=>{playGame(pcSelection, userSelects('paper'))};" class="btn btn-primary myButton" id="paper"><i class="fa-solid fa-hand"></i></button>
+          <button onclick = "()=>{playGame(pcSelection, userSelects('scissors'))};" class="btn btn-primary myButton" id="scissors"><i class="fa-solid fa-hand-scissors"></i></button>
+          <button onclick = "()=>{playGame(pcSelection, userSelects('lizard'))};" class="btn btn-primary myButton" id="lizard"><i class="fa-solid fa-hand-lizard"></i></button>
+          <button onclick = "()=>{playGame(pcSelection, userSelects('spock'))};" class="btn btn-primary myButton" id="spock"><i class="fa-solid fa-hand-spock"></i></button>
           <div>
-            <span id="pc-selection"></span><span>VS</span><span id="user-selection"></span>
-            <p id="result"></p>
+            <span id="pc-selection"></span><span> VS </span><span id="user-selection"></span><span id="result"> </span>
           </div>
         </div>
-
+      </div>  
+        <!-- footer -->
+      
     </div>
-
-
+    <div class="fixed-bottom px-2 py-0 bg-dark text-light">
+        Made with ❤️ by
+        <a href="https://github.com/adrifther">Adrián Ferrer Torres</a>
+    </div>
+     
     <!-- Do not delete this script tag, this is what connects your HTML with the Javascript code -->
     <script type="module" src="/app.js"></script>
     <script src="https://kit.fontawesome.com/323b0e232d.js" crossorigin="anonymous"></script>

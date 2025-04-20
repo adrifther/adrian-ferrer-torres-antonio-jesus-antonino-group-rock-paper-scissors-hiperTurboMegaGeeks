@@ -14,7 +14,7 @@ import { Button } from "bootstrap";
 
 const randomize = (anArray) => {
   const randomNumber = Math.floor(Math.random()*anArray.length);
-    const wordInstance = anArray[randomNumber];//[Math.floor(Math.random()*word.length)];
+    const wordInstance = anArray[randomNumber];
     console.log(`${wordInstance}`);
   
   return wordInstance;
@@ -28,182 +28,139 @@ const button = document.getElementsByClassName('myButton');
  
 
 
-const userSelects = () => {
-  const userSelection = button.id;
-  if(userSelection == "rock") {
-    console.log('user chose rock');
-    document.getElementById('user-selection').innerText = 'rock';
-    return 'rock'; 
-  }
-  if(userSelection == "paper") {
-    console.log('user chose paper');
-    document.getElementById('user-selection').innerText = 'paper';
-    return 'paper';
-  }
-  if(userSelection == "scissors") {
-    console.log('user chose scissors');
-    document.getElementById('user-selection').innerText = 'scissors';
-    return 'scissors';
-  }
-  if(userSelection == "lizard") {
-    console.log('user chose lizard');
-    document.getElementById('user-selection').innerText = 'lizard';
-    return 'lizard';
-  }
-  if(userSelection == "spock") {
-    console.log('user chose spock');
-    document.getElementById('user-selection').innerText = 'spock';
-    return 'spock';
-  }
+const userSelects = (id) => {
+    if(id == "rock") {
+      console.log('user chose rock');
+      document.getElementById('user-selection').innerText = 'rock';
+      return 'rock'; 
+    }
+    if(id == "paper") {
+      console.log('user chose paper');
+      document.getElementById('user-selection').innerText = 'paper';
+      return 'paper';
+    }
+    if(id == "scissors") {
+      console.log('user chose scissors');
+      document.getElementById('user-selection').innerText = 'scissors';
+      return 'scissors';
+    }
+    if(id == "lizard") {
+      console.log('user chose lizard');
+      document.getElementById('user-selection').innerText = 'lizard';
+      return 'lizard';
+    }
+    if(id == "spock") {
+      console.log('user chose spock');
+      document.getElementById('user-selection').innerText = 'spock';
+      return 'spock';
+    };
+
 }; 
 
 
-const pcSelects = () => { 
-    console.log(pcSelection);
-    if (pcSelection === 'rock') {
-        console.log('pc chose rock');
-        document.getElementById('pc-selection').innerText = 'rock';
-        return 'rock';
-      }
-    if (pcSelection === 'paper') {
-      console.log('pc chose paper');
-      document.getElementById('pc-selection').innerText = 'paper';
-        return 'paper';
-    }
-    if (pcSelection === 'scissors') {
-      console.log('pc chose scissors');
-      document.getElementById('pc-selection').innerText = 'scissors';
-      return 'scissors';
-    }
-    if (pcSelection === 'lizard') {
-      console.log('pc chose lizard');
-      document.getElementById('pc-selection').innerText = 'lizard';
-      return 'lizard';
-    }
-    if (pcSelection === 'spock') {
-      console.log('pc chose spock');
-      document.getElementById('pc-selection').innerText = 'spock';
-      return 'spock';
-    }
-  };
+// const pcSelects = () => { 
+//     console.log(pcSelection);
+//     if (pcSelection === 'rock') {
+//         console.log('pc chose rock');
+//         document.getElementById('pc-selection').innerText = 'rock';
+//         return 'rock';
+//       }
+//     if (pcSelection === 'paper') {
+//       console.log('pc chose paper');
+//       document.getElementById('pc-selection').innerText = 'paper';
+//         return 'paper';
+//     }
+//     if (pcSelection === 'scissors') {
+//       console.log('pc chose scissors');
+//       document.getElementById('pc-selection').innerText = 'scissors';
+//       return 'scissors';
+//     }
+//     if (pcSelection === 'lizard') {
+//       console.log('pc chose lizard');
+//       document.getElementById('pc-selection').innerText = 'lizard';
+//       return 'lizard';
+//     }
+//     if (pcSelection === 'spock') {
+//       console.log('pc chose spock');
+//       document.getElementById('pc-selection').innerText = 'spock';
+//       return 'spock';
+//     }
+//   };
 
   
   
   const playGame =  (pcSelectedOption, userSelectedOption) => {
-    pcSelectedOption = pcSelects();
-    userSelectedOption = userSelects();
-    let insertText = document.getElementById('result').innerText;
+    console.log(`Playing pc selected option: ${pcSelectedOption} vs user selected option: ${userSelectedOption}`);
+
+    document.getElementById('pc-selection').innerText = `${pcSelectedOption}`;
     if(pcSelectedOption === userSelectedOption) {
       console.log('draw');
-      insertText = 'Draw';
-      return insertText;
+      return document.getElementById('result').innerText = 'DRAW';
+      
     }
-    if(pcSelectedOption === 'rock' && userSelectedOption === 'scissors') {
+    else if(pcSelectedOption === 'rock' && userSelectedOption === 'scissors' ||
+      pcSelectedOption === 'rock' && userSelectedOption === 'lizard' || 
+      pcSelectedOption === 'paper' && userSelectedOption === 'rock' || 
+      pcSelectedOption === 'paper' && userSelectedOption === 'spock' ||
+      pcSelectedOption === 'scissors' && userSelectedOption === 'paper' || 
+      pcSelectedOption === 'scissors' && userSelectedOption === 'lizard' ||
+      pcSelectedOption === 'lizard' && userSelectedOption === 'spock' ||
+      pcSelectedOption === 'lizard' && userSelectedOption === 'paper' ||
+      pcSelectedOption === 'spock' && userSelectedOption === 'scissors' ||
+      pcSelectedOption === 'spock' && userSelectedOption === 'rock') {
       console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
+      return document.getElementById('result').innerText = 'PC WINS';
+      
     }
-    if(pcSelectedOption === 'rock' && userSelectedOption === 'lizard') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'paper' && userSelectedOption === 'rock') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'paper' && userSelectedOption === 'spock') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'scissors' && userSelectedOption === 'paper') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'scissors' && userSelectedOption === 'lizard') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'lizard' && userSelectedOption === 'paper') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'lizard' && userSelectedOption === 'spock') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'spock' && userSelectedOption === 'rock') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'spock' && userSelectedOption === 'scissors') {
-      console.log('pc wins');
-      insertText = 'PC Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'rock' && userSelectedOption === 'paper') {
+    else if(pcSelectedOption === 'rock' && userSelectedOption === 'paper' ||
+      pcSelectedOption === 'rock' && userSelectedOption === 'spock' ||
+      pcSelectedOption === 'paper' && userSelectedOption === 'scissors' ||
+      pcSelectedOption === 'paper' && userSelectedOption === 'lizard' ||
+      pcSelectedOption === 'scissors' && userSelectedOption === 'rock' ||
+      pcSelectedOption === 'scissors' && userSelectedOption === 'spock' ||
+      pcSelectedOption === 'lizard' && userSelectedOption === 'rock' ||
+      pcSelectedOption === 'lizard' && userSelectedOption === 'scissors' ||
+      pcSelectedOption === 'spock' && userSelectedOption === 'paper' ||
+      pcSelectedOption === 'spock' && userSelectedOption === 'lizard') {
       console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
+      return document.getElementById('result').innerText = 'USER WINS';
+      
     }
-    if(pcSelectedOption === 'rock' && userSelectedOption === 'spock') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'paper' && userSelectedOption === 'scissors') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'paper' && userSelectedOption === 'lizard') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'scissors' && userSelectedOption === 'rock') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'scissors' && userSelectedOption === 'spock') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'lizard' && userSelectedOption === 'rock') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'lizard' && userSelectedOption === 'scissors') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'spock' && userSelectedOption === 'paper') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
-    }
-    if(pcSelectedOption === 'spock' && userSelectedOption === 'lizard') {
-      console.log('user wins');
-      insertText = 'User Wins';
-      return insertText;
+    else{
+      console.log('error');
+      insertText = 'Error';
+      return insertText;  
     }
   };
 
   
   // here is the problem .at the end I try : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  //button.addEventListener('click', playGame);
-
+  //Those don't work for me: 
+  document.getElementById('rock').addEventListener('click', () => {playGame(pcSelection, userSelects('rock'))});
+  document.getElementById('paper').addEventListener('click', () => {playGame(pcSelection, userSelects('paper'))});
+  document.getElementById('scissors').addEventListener('click', () => {playGame(pcSelection, userSelects('scissors'))});
+  document.getElementById('lizard').addEventListener('click', () => {playGame(pcSelection, userSelects('lizard'))});
+  document.getElementById('spock').addEventListener('click', () => {playGame(pcSelection, userSelects('spock'))});
+  // getElementById('paper').addEventListener('click', pcSelection());
+  // getElementById('scissors').addEventListener('click', pcSelection());
+  // getElementById('lizard').addEventListener('click', pcSelection());
+  // getElementById('spock').addEventListener('click', pcSelection());
+  
+  // NO FUNCIONA PARA CLASES. HAY QUE PONER EL ID
+  //button.addEventListener('click', userSelects());
+  
+  // const gameButtons = [document.getElementById('rock').id, 
+  //   document.getElementById('rock').id,
+  //   document.getElementById('paper').id,
+  //   document.getElementById('scissors').id,
+  //   document.getElementById('lizard').id,
+  //   document.getElementById('spock').id
+  //  ]
+  // console.log(gameButtons);
+  // for (let gameButton of gameButtons ) {
+  //     console.log(gameButton);
+  //     document.getElementById('result').innerText = playGame(pcSelection, userSelects(this.id));
+  // };
 
   window.onload = function() {
   //write your code here
@@ -223,8 +180,3 @@ const pcSelects = () => {
   document.getElementById('excuse').innerText = sentence;
    
   };
-
-
-     
-  
-

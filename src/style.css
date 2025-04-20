@@ -10,6 +10,9 @@ body{
     color: white;
     font-size: 1.2em;
     margin: 0;
+    margin-bottom: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
     padding: 0;
 }
 h1{
@@ -27,8 +30,8 @@ li {
     font-size: medium;
 }
 .rules{
-    min-width: auto;
-    max-width: auto;
+    min-width: 200px;
+    max-width: 100%;
 }
 img{
     object-fit: contain;
