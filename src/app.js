@@ -21,7 +21,7 @@ const randomize = (anArray) => {
 };
 
 const gameArray = ['rock', 'paper', 'scisors', 'lizard', 'spock'];  
-const pcSelection = randomize(gameArray);
+const pcSelection = () => randomize(gameArray);
 console.log(`pc selection with randomize array was:${pcSelection}`);
 
 const button = document.getElementsByClassName('myButton');
@@ -136,11 +136,11 @@ const userSelects = (id) => {
   
   // here is the problem .at the end I try : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //Those don't work for me: 
-  document.getElementById('rock').addEventListener('click', () => {playGame(pcSelection, userSelects('rock'))});
-  document.getElementById('paper').addEventListener('click', () => {playGame(pcSelection, userSelects('paper'))});
-  document.getElementById('scissors').addEventListener('click', () => {playGame(pcSelection, userSelects('scissors'))});
-  document.getElementById('lizard').addEventListener('click', () => {playGame(pcSelection, userSelects('lizard'))});
-  document.getElementById('spock').addEventListener('click', () => {playGame(pcSelection, userSelects('spock'))});
+  document.getElementById('rock').addEventListener('click', () => {playGame(pcSelection(), userSelects('rock'))});
+  document.getElementById('paper').addEventListener('click', () => {playGame(pcSelection(), userSelects('paper'))});
+  document.getElementById('scissors').addEventListener('click', () => {playGame(pcSelection(), userSelects('scissors'))});
+  document.getElementById('lizard').addEventListener('click', () => {playGame(pcSelection(), userSelects('lizard'))});
+  document.getElementById('spock').addEventListener('click', () => {playGame(pcSelection(), userSelects('spock'))});
   // getElementById('paper').addEventListener('click', pcSelection());
   // getElementById('scissors').addEventListener('click', pcSelection());
   // getElementById('lizard').addEventListener('click', pcSelection());
