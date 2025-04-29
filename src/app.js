@@ -6,6 +6,14 @@ import { Button } from "bootstrap";
 
 // const button = document.getElementsByClassName('myButton');
 
+  // const _getIsListInclude = ( gameArray , reference ) => {
+  //   gameArray.reduce( (accumulator, element)=> { 
+  //     if (reference == element){ accumulator = true; return accumulator };
+  //     accumulator = false ; return accumulator; 
+  //   }
+  //    , false)
+  //   };
+  
 const _randomize = (anArray) => {
   const randomNumber = Math.floor(Math.random()*anArray.length);
     const wordInstance = anArray[randomNumber];
@@ -18,8 +26,6 @@ const scissors = {name : 'scissors', enemyList : ['rock', 'spock']};
 const lizard = {name : 'lizard', enemyList : ['scissors', 'rock']}; 
 const spock = {name : 'spock', enemyList : ['paper', 'lizard']}; 
 
-
-
 const userSelects = (id) => {
   //Podemos mirar refactor
   let selectedId = '';
@@ -27,70 +33,55 @@ const userSelects = (id) => {
       console.log('user chose rock');
       document.getElementById('user-selection').innerText = 'rock';
       selectedId = 'rock';
-      return rock.name; 
+      return rock; 
     }
     if(id == paper.name) {
       console.log('user chose paper');
       document.getElementById('user-selection').innerText = 'paper';
       selectedId = 'paper';
-      return paper.name;
+      return paper;
     }
     if(id == scissors.name) {
       console.log('user chose scissors');
       document.getElementById('user-selection').innerText = 'scissors';
       selectedId = 'scissors';
-      return scissors.name;
+      return scissors;
     }
     if(id == lizard.name) {
       console.log('user chose lizard');
       document.getElementById('user-selection').innerText = 'lizard';
       selectedId = 'lizard';
-      return lizard.name;
+      return lizard;
     }
     if(id == spock.name) {
       console.log('user chose spock');
       document.getElementById('user-selection').innerText = 'spock';
       selectedId = 'spock';
-      return spock.name;
+      return spock;
     };
-
 }; 
-
-  // const _getIsListInclude = ( gameArray , reference ) => {
-  //   gameArray.reduce( (accumulator, element)=> { 
-  //     if (reference == element){ accumulator = true; return accumulator };
-  //     accumulator = false ; return accumulator; 
-  //   }
-  //    , false)
-  //   };
-  
-  const possibleSelections = [ rock , paper , scissors , lizard , spock];
-
-  const isInEnemyList = function(userSelects){
-    let enemyList =  userSelects.enemyList; 
-      for(let enemy of enemyList){
-        if(chosenOption === enemy) {return true}; 
-        return false; 
-      }
-  } ; 
-  
-  const pcSelector = () =>  _randomize(possibleSelections);
   
 function playGame(userSelection){
+  
+  const possibleSelections = [ rock , paper , scissors , lizard , spock];
+  const pcSelector = () =>  _randomize(possibleSelections);
+  const pcSelection = pcSelector().name;
 
-  const pcSelection = pcSelector().name;  
-    console.log(`Playing pc selected option: ${pcSelection} vs user selected option: ${userSelection}`);
-
-    
+  let isInEnemyList = function(userSelects){
+    let enemyList =  userSelects.enemyList;
+      for(let enemy of enemyList){
+        if(pcSelection === enemy) {return true}; 
+        
+      }
+      return false; 
+  } ; 
+  
     document.getElementById('pc-selection').innerText = `${pcSelection}`;
     if(pcSelection === userSelection) {
       console.log('draw');
       return document.getElementById('result').innerText = 'DRAW';
       
     }
-
-    //const userSelectionEnemyList = userSelection.enemyList;
-    //const  {enemyList : userSelectionEnemyList} = userSelection;
 
     const userSelectionEnemyList = userSelection.enemyList;
     console.log(userSelection.enemyList);
@@ -103,7 +94,7 @@ function playGame(userSelection){
         }
 
     }
-      
+        
   document.getElementById('rock').addEventListener('click', () => {playGame( userSelects('rock'))});
   document.getElementById('paper').addEventListener('click', () => {playGame( userSelects('paper'))});
   document.getElementById('scissors').addEventListener('click', () => {playGame( userSelects('scissors'))});
