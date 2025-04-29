@@ -1,3 +1,20 @@
+# ESTRATEGY FOR BUILDING THE GAME
+
+# 1 Pseudocode
+
+El usuario selecciona una de las opciones.
+La PC selecciona una de las opciones. 
+
+1ºComprobamos si son iguales: 
+  si son iguales empate y paramos el programa. 
+2ºComparamos las susceptibilidades con el contrario: 
+  si pierdo o gano parada.
+
+
+#  ![image](https://github.com/user-attachments/assets/ef2d90f8-e0a2-4c74-acd3-8853c2bd51ff)
+
+
+ 
 <!-- hide -->
 # Hello World with Vanilla JS
 
