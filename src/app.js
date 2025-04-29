@@ -20,7 +20,7 @@ const scissors = {name : 'scissors', enemyList : ['rock', 'spock']};
 const lizard = {name : 'lizard', enemyList : ['scissors', 'rock']}; 
 const spock = {name : 'spock', enemyList : ['paper', 'lizard']}; 
 
-const pcSelection = () => _randomize(gameArray);
+//const pcSelection = () => _randomize(gameArray);
 
 //console.log(`pc selection with randomize array was:${pcSelection}`);
 
@@ -28,32 +28,37 @@ const button = document.getElementsByClassName('myButton');
  
 
 
-const userSelects = (id) => {
+const userSelects = () => {
   //Podemos mirar refactor
-    if(id == "rock") {
+  let id =document.getElementById ()
+    if(id == rock.name) {
       console.log('user chose rock');
       document.getElementById('user-selection').innerText = 'rock';
-      return 'rock'; 
+      return rock.name; 
     }
-    if(id == "paper") {
+     id =document.getElementById ('paper')
+    if(id == paper.name) {
       console.log('user chose paper');
       document.getElementById('user-selection').innerText = 'paper';
-      return 'paper';
+      return paper.name;
     }
-    if(id == "scissors") {
+     id =document.getElementById ('scissors')
+    if(id == scissors.name) {
       console.log('user chose scissors');
       document.getElementById('user-selection').innerText = 'scissors';
-      return 'scissors';
+      return scissors.name;
     }
-    if(id == "lizard") {
+    id =document.getElementById ('lizard')
+    if(id == lizard.name) {
       console.log('user chose lizard');
       document.getElementById('user-selection').innerText = 'lizard';
-      return 'lizard';
+      return lizard.name;
     }
-    if(id == "spock") {
+   id =document.getElementById ('spock')
+    if(id == spock.name) {
       console.log('user chose spock');
       document.getElementById('user-selection').innerText = 'spock';
-      return 'spock';
+      return spock.name;
     };
 
 }; 
@@ -67,9 +72,11 @@ const userSelects = (id) => {
     };
   
   
-  const playGame =  (userSelects()) => {
+function playGame (userSelects())  {
     
-    const pcSelection = () => _randomize(gameArray);
+    const pcOptions = {
+
+    }
 
     console.log(`Playing pc selected option: ${pcSelection} vs user selected option: ${userSelection}`);
 
@@ -80,7 +87,7 @@ const userSelects = (id) => {
       
     }
 
-    const userSelectionEnemyList = userSelection.enemyList;
+    const userSelection = userSelection.enemyList;
     const  {enemyList : userSelectionEnemyList} = userSelection;
 
     if(_getIsListInclude( userSelectionEnemyList, pcSelection.name)){
