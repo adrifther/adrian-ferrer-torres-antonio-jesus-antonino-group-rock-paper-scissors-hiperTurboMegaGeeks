@@ -1,11 +1,10 @@
 import "bootstrap";
 import "./style.css";
 
-
-
 import "./assets/img/4geeks.ico";
 import { Button } from "bootstrap";
 
+// const button = document.getElementsByClassName('myButton');
 
 const _randomize = (anArray) => {
   const randomNumber = Math.floor(Math.random()*anArray.length);
@@ -19,11 +18,6 @@ const scissors = {name : 'scissors', enemyList : ['rock', 'spock']};
 const lizard = {name : 'lizard', enemyList : ['scissors', 'rock']}; 
 const spock = {name : 'spock', enemyList : ['paper', 'lizard']}; 
 
-
-//console.log(`pc selection with randomize array was:${pcSelection}`);
-
-const button = document.getElementsByClassName('myButton');
- 
 
 
 const userSelects = (id) => {
@@ -69,27 +63,22 @@ const userSelects = (id) => {
   //   }
   //    , false)
   //   };
-
   
-  const isInEnemyList = (enemyList, chosenOption) =>{
-    for(let enemy of enemyList){
-    if(chosenOption === enemy) {return true}; 
-    return false; 
-    }
+  const possibleSelections = [ rock , paper , scissors , lizard , spock];
+
+  const isInEnemyList = function(userSelects){
+    let enemyList =  userSelects.enemyList; 
+      for(let enemy of enemyList){
+        if(chosenOption === enemy) {return true}; 
+        return false; 
+      }
   } ; 
   
-    // const pcOptions = {
-    //   nameList : ['rock', 'paper', 'scissors', 'lizard', 'spock'],
-    // };
-    
-    const nameList = ['rock', 'paper', 'scissors', 'lizard', 'spock']; 
-
-    const pcSelector = () => {_randomize(nameList)};
-    const pcSelection = pcSelector(); 
-    // let seleccion = userSelects(id); 
-
+  const pcSelector = () =>  _randomize(possibleSelections);
+  
 function playGame(userSelection){
-    
+
+  const pcSelection = pcSelector().name;  
     console.log(`Playing pc selected option: ${pcSelection} vs user selected option: ${userSelection}`);
 
     
@@ -106,7 +95,7 @@ function playGame(userSelection){
     const userSelectionEnemyList = userSelection.enemyList;
     console.log(userSelection.enemyList);
 
-    if(isInEnemyList(userSelectionEnemyList, pcSelection)){
+    if(isInEnemyList(userSelection)){
         return document.getElementById('result').innerText = 'PC WINS you lose ';
     }
     {
@@ -115,8 +104,6 @@ function playGame(userSelection){
 
     }
       
-  // here is the problem .at the end I try : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  //Those don't work for me: 
   document.getElementById('rock').addEventListener('click', () => {playGame( userSelects('rock'))});
   document.getElementById('paper').addEventListener('click', () => {playGame( userSelects('paper'))});
   document.getElementById('scissors').addEventListener('click', () => {playGame( userSelects('scissors'))});
