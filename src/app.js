@@ -13,14 +13,12 @@ const _randomize = (anArray) => {
   return wordInstance;
 };
 
-const gameArray = ['rock', 'paper', 'scisors', 'lizard', 'spock']; 
 const rock = {name : 'rock', enemyList : ['paper', 'spock']};
 const paper = {name : 'paper', enemyList : ['scissors', 'lizard']}; 
 const scissors = {name : 'scissors', enemyList : ['rock', 'spock']}; 
 const lizard = {name : 'lizard', enemyList : ['scissors', 'rock']}; 
 const spock = {name : 'spock', enemyList : ['paper', 'lizard']}; 
 
-//const pcSelection = () => _randomize(gameArray);
 
 //console.log(`pc selection with randomize array was:${pcSelection}`);
 
@@ -28,58 +26,73 @@ const button = document.getElementsByClassName('myButton');
  
 
 
-const userSelects = () => {
+const userSelects = (id) => {
   //Podemos mirar refactor
-  let id =document.getElementById ()
+  let selectedId = '';
     if(id == rock.name) {
       console.log('user chose rock');
       document.getElementById('user-selection').innerText = 'rock';
+      selectedId = 'rock';
       return rock.name; 
     }
-     id =document.getElementById ('paper')
     if(id == paper.name) {
       console.log('user chose paper');
       document.getElementById('user-selection').innerText = 'paper';
+      selectedId = 'paper';
       return paper.name;
     }
-     id =document.getElementById ('scissors')
     if(id == scissors.name) {
       console.log('user chose scissors');
       document.getElementById('user-selection').innerText = 'scissors';
+      selectedId = 'scissors';
       return scissors.name;
     }
-    id =document.getElementById ('lizard')
     if(id == lizard.name) {
       console.log('user chose lizard');
       document.getElementById('user-selection').innerText = 'lizard';
+      selectedId = 'lizard';
       return lizard.name;
     }
-   id =document.getElementById ('spock')
     if(id == spock.name) {
       console.log('user chose spock');
       document.getElementById('user-selection').innerText = 'spock';
+      selectedId = 'spock';
       return spock.name;
     };
 
 }; 
 
-  const _getIsListInclude = ([],reference) => {
-    gameArray.reduce( (accumulator, element)=> { 
-      if (reference == element){ accumulator = true; return accumulator };
-      accumulator = false ; return accumulator; 
+  // const _getIsListInclude = ( gameArray , reference ) => {
+  //   gameArray.reduce( (accumulator, element)=> { 
+  //     if (reference == element){ accumulator = true; return accumulator };
+  //     accumulator = false ; return accumulator; 
+  //   }
+  //    , false)
+  //   };
+
+  
+  const isInEnemyList = (enemyList, chosenOption) =>{
+    for(let enemy of enemyList){
+    if(chosenOption === enemy) {return true}; 
+    return false; 
     }
-     , false)
-    };
+  } ; 
   
-  
-function playGame (userSelects())  {
+    // const pcOptions = {
+    //   nameList : ['rock', 'paper', 'scissors', 'lizard', 'spock'],
+    // };
     
-    const pcOptions = {
+    const nameList = ['rock', 'paper', 'scissors', 'lizard', 'spock']; 
 
-    }
+    const pcSelector = () => {_randomize(nameList)};
+    const pcSelection = pcSelector(); 
+    // let seleccion = userSelects(id); 
 
+function playGame(userSelection){
+    
     console.log(`Playing pc selected option: ${pcSelection} vs user selected option: ${userSelection}`);
 
+    
     document.getElementById('pc-selection').innerText = `${pcSelection}`;
     if(pcSelection === userSelection) {
       console.log('draw');
@@ -87,10 +100,13 @@ function playGame (userSelects())  {
       
     }
 
-    const userSelection = userSelection.enemyList;
-    const  {enemyList : userSelectionEnemyList} = userSelection;
+    //const userSelectionEnemyList = userSelection.enemyList;
+    //const  {enemyList : userSelectionEnemyList} = userSelection;
 
-    if(_getIsListInclude( userSelectionEnemyList, pcSelection.name)){
+    const userSelectionEnemyList = userSelection.enemyList;
+    console.log(userSelection.enemyList);
+
+    if(isInEnemyList(userSelectionEnemyList, pcSelection)){
         return document.getElementById('result').innerText = 'PC WINS you lose ';
     }
     {
@@ -99,15 +115,11 @@ function playGame (userSelects())  {
 
     }
       
-    
-
- 
-  
   // here is the problem .at the end I try : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //Those don't work for me: 
-  document.getElementById('rock').addEventListener('click', () => {playGame(pcSelection(), userSelects('rock'))});
-  document.getElementById('paper').addEventListener('click', () => {playGame(pcSelection(), userSelects('paper'))});
-  document.getElementById('scissors').addEventListener('click', () => {playGame(pcSelection(), userSelects('scissors'))});
-  document.getElementById('lizard').addEventListener('click', () => {playGame(pcSelection(), userSelects('lizard'))});
-  document.getElementById('spock').addEventListener('click', () => {playGame(pcSelection(), userSelects('spock'))});
+  document.getElementById('rock').addEventListener('click', () => {playGame( userSelects('rock'))});
+  document.getElementById('paper').addEventListener('click', () => {playGame( userSelects('paper'))});
+  document.getElementById('scissors').addEventListener('click', () => {playGame( userSelects('scissors'))});
+  document.getElementById('lizard').addEventListener('click', () => {playGame(userSelects('lizard'))});
+  document.getElementById('spock').addEventListener('click', () => {playGame(userSelects('spock'))});
 
