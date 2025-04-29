@@ -6,29 +6,28 @@ import "./style.css";
 import "./assets/img/4geeks.ico";
 import { Button } from "bootstrap";
 
-// const rock = document.getElementById("rock");
-// const paper = document.getElementById("paper");
-// const scissors = document.getElementById("scissors");
-// const lizard = document.getElementById("lizard");
-// const spock = document.getElementById("spock");
 
-const randomize = (anArray) => {
+const _randomize = (anArray) => {
   const randomNumber = Math.floor(Math.random()*anArray.length);
     const wordInstance = anArray[randomNumber];
-    console.log(`${wordInstance}`);
-  
   return wordInstance;
 };
 
-const gameArray = ['rock', 'paper', 'scisors', 'lizard', 'spock'];  
+const gameArray = ['rock', 'paper', 'scisors', 'lizard', 'spock']; 
+const rock = {name : 'rock', enemyList : ['paper', 'spock']};
+const paper = {name : 'paper', enemyList : ['scissors', 'lizard']}; 
+const scissors = {name : 'scissors', enemyList : ['rock', 'spock']}; 
+const lizard = {name : 'lizard', enemyList : ['scissors', 'rock']}; 
+const spock = {name : 'spock', enemyList : ['paper', 'lizard']}; 
 const pcSelection = () => randomize(gameArray);
-console.log(`pc selection with randomize array was:${pcSelection}`);
+//console.log(`pc selection with randomize array was:${pcSelection}`);
 
 const button = document.getElementsByClassName('myButton');
  
 
 
 const userSelects = (id) => {
+  //Podemos mirar refactor
     if(id == "rock") {
       console.log('user chose rock');
       document.getElementById('user-selection').innerText = 'rock';
@@ -58,47 +57,25 @@ const userSelects = (id) => {
 }; 
 
 
-// const pcSelects = () => { 
-//     console.log(pcSelection);
-//     if (pcSelection === 'rock') {
-//         console.log('pc chose rock');
-//         document.getElementById('pc-selection').innerText = 'rock';
-//         return 'rock';
-//       }
-//     if (pcSelection === 'paper') {
-//       console.log('pc chose paper');
-//       document.getElementById('pc-selection').innerText = 'paper';
-//         return 'paper';
-//     }
-//     if (pcSelection === 'scissors') {
-//       console.log('pc chose scissors');
-//       document.getElementById('pc-selection').innerText = 'scissors';
-//       return 'scissors';
-//     }
-//     if (pcSelection === 'lizard') {
-//       console.log('pc chose lizard');
-//       document.getElementById('pc-selection').innerText = 'lizard';
-//       return 'lizard';
-//     }
-//     if (pcSelection === 'spock') {
-//       console.log('pc chose spock');
-//       document.getElementById('pc-selection').innerText = 'spock';
-//       return 'spock';
-//     }
-//   };
 
   
   
-  const playGame =  (pcSelectedOption, userSelectedOption) => {
+  const playGame =  (userSelectedOption) => {
     console.log(`Playing pc selected option: ${pcSelectedOption} vs user selected option: ${userSelectedOption}`);
-
+    const pcSelection = () => _randomize(gameArray);
     document.getElementById('pc-selection').innerText = `${pcSelectedOption}`;
     if(pcSelectedOption === userSelectedOption) {
       console.log('draw');
       return document.getElementById('result').innerText = 'DRAW';
       
     }
-    else if(pcSelectedOption === 'rock' && userSelectedOption === 'scissors' ||
+
+    const userSelectionEnemyList = userSelectedOption.enemyList;
+    const {enemyList : userSelectionEnemyList} = userSelectedOption;
+    if(){
+
+    }
+   /* else if(pcSelectedOption === 'rock' && userSelectedOption === 'scissors' ||
       pcSelectedOption === 'rock' && userSelectedOption === 'lizard' || 
       pcSelectedOption === 'paper' && userSelectedOption === 'rock' || 
       pcSelectedOption === 'paper' && userSelectedOption === 'spock' ||
@@ -108,10 +85,10 @@ const userSelects = (id) => {
       pcSelectedOption === 'lizard' && userSelectedOption === 'paper' ||
       pcSelectedOption === 'spock' && userSelectedOption === 'scissors' ||
       pcSelectedOption === 'spock' && userSelectedOption === 'rock') {
-      console.log('pc wins');
+      console.log('pc wins');*/
       return document.getElementById('result').innerText = 'PC WINS';
       
-    }
+    }/*
     else if(pcSelectedOption === 'rock' && userSelectedOption === 'paper' ||
       pcSelectedOption === 'rock' && userSelectedOption === 'spock' ||
       pcSelectedOption === 'paper' && userSelectedOption === 'scissors' ||
@@ -122,7 +99,7 @@ const userSelects = (id) => {
       pcSelectedOption === 'lizard' && userSelectedOption === 'scissors' ||
       pcSelectedOption === 'spock' && userSelectedOption === 'paper' ||
       pcSelectedOption === 'spock' && userSelectedOption === 'lizard') {
-      console.log('user wins');
+      console.log('user wins');*/
       return document.getElementById('result').innerText = 'USER WINS';
       
     }
@@ -133,6 +110,10 @@ const userSelects = (id) => {
     }
   };
 
+
+  const _getIsListInclude = ([],reference) => {
+    gameArray.reduce()
+  }
   
   // here is the problem .at the end I try : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //Those don't work for me: 
