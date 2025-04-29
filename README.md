@@ -14,7 +14,11 @@ La PC selecciona una de las opciones.
 #  ![image](https://github.com/user-attachments/assets/ef2d90f8-e0a2-4c74-acd3-8853c2bd51ff)
 
 
- 
+# Strategy 
+
+refactoring and use of objects and their behaviorour. 
+  
+
 <!-- hide -->
 # Hello World with Vanilla JS
 
