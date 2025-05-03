@@ -4,15 +4,6 @@ import "./style.css";
 import "./assets/img/4geeks.ico";
 import { Button } from "bootstrap";
 
-// const button = document.getElementsByClassName('myButton');
-
-  // const _getIsListInclude = ( gameArray , reference ) => {
-  //   gameArray.reduce( (accumulator, element)=> { 
-  //     if (reference == element){ accumulator = true; return accumulator };
-  //     accumulator = false ; return accumulator; 
-  //   }
-  //    , false)
-  //   };
   
 const _randomize = (anArray) => {
   const randomNumber = Math.floor(Math.random()*anArray.length);
