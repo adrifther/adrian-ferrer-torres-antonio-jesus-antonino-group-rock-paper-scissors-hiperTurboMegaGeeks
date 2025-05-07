@@ -17,6 +17,7 @@ const lizard = {name : 'lizard', enemyList : ['scissors', 'rock']};
 const spock = {name : 'spock', enemyList : ['paper', 'lizard']}; 
 
 const userSelects = (id) => {
+
     if(id == rock.name) {
       document.getElementById('user-selection').innerText = 'rock';
       return rock; 
@@ -43,6 +44,7 @@ function playGame(userSelection){
   const possibleSelections = [ rock , paper , scissors , lizard , spock];
   const pcSelector = () =>  _randomize(possibleSelections);
   const pcSelection = pcSelector().name;
+
   let isInEnemyList = function(userSelects){
     let enemyList =  userSelects.enemyList;
       for(let enemy of enemyList){
@@ -50,18 +52,26 @@ function playGame(userSelection){
       }
       return false; 
   } ; 
-  document.getElementById('pc-selection').innerText = `${pcSelection}`;
-  if(pcSelection === userSelection) {
+  
+    document.getElementById('pc-selection').innerText = `${pcSelection}`;
+    if(pcSelection === userSelection) {
       console.log('draw');
       return document.getElementById('result').innerText = 'DRAW';
-  }
-  const userSelectionEnemyList = userSelection.enemyList;
+      
+    }
 
-  if(isInEnemyList(userSelection)){
-      return document.getElementById('result').innerText = 'PC WINS you lose ';
-  }
-  {return document.getElementById('result').innerText = 'USER WINS';}
-}
+    const userSelectionEnemyList = userSelection.enemyList;
+    console.log(userSelection.enemyList);
+
+    if(isInEnemyList(userSelection)){
+        return document.getElementById('result').innerText = 'PC WINS you lose ';
+    }
+    {
+        return document.getElementById('result').innerText = 'USER WINS';
+        }
+
+    }
+
         
   document.getElementById('rock').addEventListener('click', () => {playGame( userSelects('rock'))});
   document.getElementById('paper').addEventListener('click', () => {playGame( userSelects('paper'))});
